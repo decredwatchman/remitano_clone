@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+
+
+<span id="bitcoin"></span>
+<span id="litecoin"></span>
+<span id="ethereum"></span>
+<span id="dogecoin"></span>
+
+
+    <script>
+        
+var btc = document.getElementById("bitcoin");
+var ltc = document.getElementById("litecoin");
+var eth = document.getElementById("ethereum");
+var doge = document.getElementById("dogecoin");
+
+var liveprice = {
+    "async": true,
+    "scroosDomain": true,
+    "url": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Clitecoin%2Cethereum%2Cdogecoin&vs_currencies=usd",
+
+    "method": "GET",
+    "headers": {}
+}
+
+$.ajax(liveprice).done(function (response){
+    btc.innerHTML = response.bitcoin.usd;
+    ltc.innerHTML = response.litecoin.usd;
+    eth.innerHTML = response.ethereum.usd;
+    doge.innerHTML = response.dogecoin.usd;
+
+});
+    </script>
+</body>
+</html>
